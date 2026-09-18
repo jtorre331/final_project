@@ -1,4 +1,4 @@
-*.log
-/User_Manual/
-*-*.txt
-SRS_v*
+**/*.log
+User_Manual/
+**/*-*.txt
+**/SRS_v*
