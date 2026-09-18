@@ -1,7 +1,7 @@
 # ignore all log files
 *.log
 # ignore the whole user manual
-User_Manual/
+/User_Manual/
 # all txt files that include a "-"
 *-*.txt
 # the styles.css file
