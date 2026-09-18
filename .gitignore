@@ -1,0 +1,4 @@
+*.log
+/User_Manual/
+*-*.txt
+SRS_v*
