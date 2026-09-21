@@ -1,0 +1,1 @@
+This is the repository for the final project for CS 3338. This repository contains various subdirectories related to the final project. The Team Project Board is used to track tasks that need to be completed. The .gitignore file ignores certain files and folders in the root directory and sub-directories in order to avoid accidentally uploading them to the repository. 

@@ -11,5 +11,4 @@ styles.css
 # all the SDD files besides the final version
 **/SDD_v*
 # any README files not in the root directory
-README.md
-!/README.md
+/**/ README.md
