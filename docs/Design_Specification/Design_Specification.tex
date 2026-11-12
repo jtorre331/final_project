@@ -1,0 +1,133 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{longtable,booktabs,array,enumitem,hyperref,xcolor}
+\hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
+\setlist[itemize]{leftmargin=*}
+\newcommand{\planned}{\textit{(still to be confirmed)}}
+\title{Golden Eagle Flight Plan\\Design Specification\\CS 3338 Final Project}
+\author{Group 26\\Design Specification}
+\date{November 2026}
+\begin{document}
+\maketitle
+\begin{center}Draft --- November 2026\end{center}
+\tableofcontents
+\newpage
+
+\section{Project Overview}
+This document goes over how we plan to organize the Golden Eagle Flight Plan project, including the pages users will see, how accounts and permissions will work, what information we need to store, and which tools the project will use. It follows our Software Requirements Specification (SRS) and Software Design Document (SDD). Our goal is to put student events and development resources in one place. Some features are still being planned, so this document describes the design rather than saying everything has already been built.
+
+\section{Users and Permissions}
+Our SRS lists four user roles: student, faculty, student organization, and administrator. Each role will have different permissions. The backend will need to check these permissions so users cannot access restricted information just by going directly to a page.
+\begin{longtable}{p{0.27\textwidth}p{0.63\textwidth}}
+\toprule Role & Intended access \\ \midrule
+Student & Register without administrative role approval; view own profile, home page, events, RSVP, and flight-plan scoreboard; cannot view other students' profiles.\\
+Faculty & Register pending administrator approval; manage events, view and search student profiles according to approved access rules.\\
+Student organization & Register pending administrator approval; manage events; cannot access student profiles.\\
+Administrator & Review faculty/organization registrations, assign roles, and administer site permissions and content.\\
+\bottomrule
+\end{longtable}
+\noindent\textbf{Student privacy:} Our requirements mention FERPA when explaining why student organizations cannot view student profiles. Before building this part, we still need to confirm which student information faculty should be allowed to see.
+
+\section{Page and Screen Designs}
+\subsection{Login Landing Screen}
+If someone tries to open a page without being logged in, they will be sent to the login page. From there, they can either sign in or create a new account.
+\subsection{Login Form}
+The login form will have a username field, a password field, a forgot-password option, and a login button. The password will be hidden while the user types. If the login fails, the page will say ``Incorrect Username/Password'' instead of telling the user which part was wrong. A successful login will take the user to the homepage.
+\subsection{Password Recovery Screens}
+If a user forgets their password, they can request a reset link. The confirmation page will say that the email was sent, but it will not show the email address. The reset page will ask the user to enter and confirm a new password. We still need to decide how reset links will expire and how to prevent repeated requests.
+\subsection{Account Type Selection and Registration}
+Users select student, faculty, or student organization. Student registration collects first and last name, username, password and confirmation, university email, major, and phone number. Faculty registration also collects department and job title. Organization registration collects organization name, username, password and confirmation, email, and description. The SDD requires unique emails; student/faculty addresses must end in \texttt{@calstatela.edu}, while organization addresses are not restricted to that domain. Password entries are masked. Faculty and organization applications enter an administrator approval flow; students receive the student role automatically.
+\subsection{Home Page}
+After logging in, students will see a homepage. We plan to use it as a starting point for reaching events, profiles, resources, and the scoreboard. The exact layout has not been decided yet.
+\subsection{Profile Pages}
+Every account will have a profile. Students can see their own profile, but not another student's profile. Faculty will be able to search for students by name and view the information they are allowed to access. We still need to agree on which profile fields can be edited and by whom.
+\subsection{Events Page and Event Detail}
+Anyone with an account will be able to look through events and RSVP. Faculty and student organizations will also be able to post events, change dates, cancel events, and check how many people are interested. The event form will include the host, date and time, location, registration details, tags, contact information, and any flyers or useful links. If an event changes, students who RSVP'd should be notified. We have not decided how those notifications will be sent yet.
+\subsection{Event Filtering}
+Students will be able to filter events using tags or keywords. Our requirements also describe showing events that match details in a student's profile. We still need to decide exactly how those matches will be calculated.
+\subsection{Student Scoreboard}
+The scoreboard will show students how much of their flight plan they have completed and suggest activities based on their year in school. It will be divided into Academic Preparation, Career Development, and Leadership \& Community Engagement. The original project also mentions levels and badges, but our group has not worked out those details in the SDD yet.
+\subsection{Resources and AI Screens}
+The original Golden Eagle Flight Plan project includes a resources section and plans for an AI advisor chatbot and resume grader. We can use those ideas for future work, but they are not features our group has confirmed for this version.
+\subsection{Administrator Interface}
+Admins will need a page where they can review faculty and student organization registration requests, approve or reject them, and manage roles. We still need to design the exact page layout.
+
+\section{Backend and API}
+Our initial plan uses JavaScript and Node.js for the backend. The original senior project also uses Express, MongoDB Atlas, Mongoose, and JWT. We need to check with the team before assuming we will use the same setup for every part.
+\begin{longtable}{p{0.30\textwidth}p{0.60\textwidth}}
+\toprule Service & Responsibility \\ \midrule
+Authentication & Register accounts, verify password hashes, log in and out, reset passwords, manage sessions or tokens.\\
+Authorization & Check authenticated role and ownership on every protected operation.\\
+Profile service & Read or update permitted profile fields; prevent unauthorized student-record access.\\
+Approval service & Queue faculty/organization applications and allow administrators to approve roles.\\
+Events service & Create, read, update, cancel/delete events; manage RSVP records and tags.\\
+Notifications & Inform RSVP holders of relevant event changes (delivery mechanism to be decided).\\
+Scoreboard service & Return student tasks, progress, and suggestions (future design details to be confirmed).\\
+\bottomrule
+\end{longtable}
+\noindent\textbf{API details:} Our current documents do not list the exact API routes or request formats. We will add those after the backend structure is decided.
+
+\section{Data Model}
+Jason's SDD describes separate records for users, roles, and profiles, connected using unique IDs. The requirements also call for event information. The table below shows the information we expect to need, but it is not a final database schema.
+\begin{longtable}{p{0.25\textwidth}p{0.65\textwidth}}
+\toprule Entity & Conceptual fields and relationships \\ \midrule
+User & Unique user ID, unique username/email, password hash, role reference(s), profile reference, approval state.\\
+Role & Unique role ID, role name, associated permissions.\\
+Profile & User ID, role-specific attributes such as major or department, with access controls.\\
+Event & Event ID, host, posting user, time, location, registration details, tags, description, links/media, status.\\
+RSVP & User ID, event ID, response state; supports interest counts and change notifications.\\
+Scoreboard task/completion & Potential future entities for tasks and student progress; specific schema pending agreement.\\
+\bottomrule
+\end{longtable}
+\noindent\textbf{Security:} Our SRS requires bcrypt with salted password hashes, so passwords should never be saved as plain text. We will also need permission checks when users open profiles or make changes to events.
+
+\section{Tools, Libraries, and Docker Setup}
+The assignment asks us to list the packages and libraries needed to run the project with Docker. This table is based on our initial plan and the original Golden Eagle Flight Plan project. We will update the versions and Docker details after checking Jason's configuration.
+\begin{longtable}{p{0.28\textwidth}p{0.62\textwidth}}
+\toprule Component & Candidate dependency / purpose \\ \midrule
+Frontend & React Native with Expo (senior-project reference). Confirm whether the group targets Expo web, native clients, or a React web frontend before choosing build commands.\\
+Backend runtime & Node.js, npm; Express for HTTP API (proposed).\\
+Database & MongoDB or MongoDB Atlas; Mongoose if the Express/MongoDB stack is adopted.\\
+Authentication & bcrypt for password hashing (required); jsonwebtoken if JWT sessions are adopted.\\
+Configuration & dotenv for environment configuration; cors if cross-origin access is required.\\
+Development & nodemon optional for local development only.\\
+File handling & multer or alternative only if flyer/image uploads are implemented.\\
+Containers & Docker Compose services for frontend and backend; a database service if self-hosted MongoDB is used. With MongoDB Atlas, database access is external rather than a local container.\\
+\bottomrule
+\end{longtable}
+\subsection{Deployment and Configuration}
+We should keep passwords, database connection strings, and other secrets out of GitHub. The Docker setup will likely need settings such as a database URL, a port number, and an authentication secret if we use JWT. Before finalizing this section, we need to compare it with the team's actual \texttt{docker-compose.yml} and package files.
+
+\section{Snapshot Plan}
+The Snapshot Objectives document we have so far only explains the start of the project: setting up the website framework and account permissions. The outline below is one possible way to divide the remaining features. We should adjust it once the team agrees on the snapshot goals.
+\begin{itemize}
+\item Snapshot 1: base framework, registration, login, profile, and initial access rules.
+\item Snapshot 2: proposed event creation, RSVP, and event-management interfaces.
+\item Snapshot 3: proposed scoreboard, resources, and personalized event filtering.
+\item Snapshot 4: testing refinements, documentation updates, and future work (including AI features if not implemented).
+\end{itemize}
+After each snapshot, we will update this document to match the changes made to the SRS, SDD, Jira tasks, and Docker setup.
+
+\section{Things We Still Need to Confirm}
+\begin{enumerate}
+\item Is the group's frontend a web React application, Expo web, or React Native mobile application?
+\item Which snapshot contains events, RSVPs, scoreboard, and personalized filtering?
+\item Which exact packages and versions are present in the team's Docker and package files?
+\item What student-profile information may faculty access, and under what authorization conditions?
+\item What is the finalized data schema and API route design?
+\item Is the Design Specification owned by the author of this draft, and who owns the required high-level workflow diagram?
+\end{enumerate}
+
+\section{References}
+\begin{itemize}
+\item CS 3338 Final Project assignment instructions (provided by the course).
+\item Group Software Requirements Specification for CS 3338 Final Project (provided PDF).
+\item Group Software Design Document for CS 3338 Final Project (provided PDF).
+\item Group CS 3338 Final Project Snapshot Objectives (provided PDF).
+\item Group Initial Planning (provided PDF).
+\item Golden Eagle Flight Plan senior design project description (provided reference).
+\end{itemize}
+\end{document}
