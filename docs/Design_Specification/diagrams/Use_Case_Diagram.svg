@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1560" viewBox="0 0 1800 1560" role="img" aria-labelledby="svgTitle svgDesc">
+<title id="svgTitle">Golden Eagle Flight Plan — UML Use Case Diagram</title>
+<desc id="svgDesc">Golden Eagle Flight Plan software use cases. Visitor registers. All four registered roles inherit login, event viewing and RSVP, and own-profile access. Student tracks flight-plan and receives updates. Faculty views student profiles and manages events. Student organizations manage events but not student profiles. Administrator approves accounts and manages permissions.</desc>
+<style>text {font-family: Arial, Helvetica, sans-serif;} .connector {stroke:#647b90;stroke-width:2.25;fill:none;stroke-linejoin:round;stroke-linecap:round;} .gen {stroke:#9aaabb;stroke-width:1.9;fill:none;stroke-linejoin:round;stroke-linecap:round;} .usecase {fill:#ffffff;stroke:#315a7d;stroke-width:2.1;} .actor {stroke:#1f405d;stroke-width:3.25;fill:none;stroke-linecap:round;stroke-linejoin:round;} .small {fill:#557083;font-size:18px} </style>
+<rect width="1800" height="1560" fill="white"/>
+<text x="95" y="67" text-anchor="start" font-size="43" font-weight="700" fill="#173956" >Golden Eagle Flight Plan</text>
+<text x="95" y="111" text-anchor="start" font-size="29" font-weight="500" fill="#2d516e" >UML Use Case Diagram</text>
+<text x="1720" y="90" text-anchor="end" font-size="19" font-weight="400" fill="#688097" >Planned features • Based on the team Software Requirements Specification</text>
+<line x1="95" y1="132" x2="1720" y2="132" stroke="#d6e1eb" stroke-width="2"/>
+<text x="135" y="170" text-anchor="start" font-size="19" font-weight="700" fill="#476b8b" letter-spacing="2">ACTORS</text>
+<rect x="455" y="153" width="1265" height="1310" rx="20" fill="#fff" stroke="#507798" stroke-width="2.0" stroke-dasharray="11 8"/>
+<text x="1480" y="183" text-anchor="end" font-size="19" font-weight="700" fill="#31587a" letter-spacing="1">GOLDEN EAGLE FLIGHT PLAN SYSTEM</text>
+<rect x="476" y="183" width="1222" height="97" rx="12" fill="#f4f8fc" stroke="none" stroke-width="0" />
+<text x="500" y="212" text-anchor="start" font-size="18" font-weight="700" fill="#597895" letter-spacing="1.3">ACCOUNT CREATION</text>
+<rect x="476" y="292" width="1222" height="260" rx="12" fill="#ffffff" stroke="none" stroke-width="0" />
+<text x="500" y="321" text-anchor="start" font-size="18" font-weight="700" fill="#597895" letter-spacing="1.3">SHARED ACCOUNT ACTIONS</text>
+<rect x="476" y="566" width="1222" height="298" rx="12" fill="#f4f8fc" stroke="none" stroke-width="0" />
+<text x="500" y="595" text-anchor="start" font-size="18" font-weight="700" fill="#597895" letter-spacing="1.3">STUDENT FEATURES</text>
+<rect x="476" y="878" width="1222" height="306" rx="12" fill="#ffffff" stroke="none" stroke-width="0" />
+<text x="500" y="907" text-anchor="start" font-size="18" font-weight="700" fill="#597895" letter-spacing="1.3">FACULTY &amp; ORGANIZERS</text>
+<text x="1455" y="938" text-anchor="start" font-size="18" font-weight="400" fill="#8190a0" >Faculty only</text>
+<text x="1455" y="1103" text-anchor="start" font-size="18" font-weight="400" fill="#8190a0" >Faculty and student organizations</text>
+<rect x="476" y="1198" width="1222" height="253" rx="12" fill="#f4f8fc" stroke="none" stroke-width="0" />
+<text x="500" y="1227" text-anchor="start" font-size="18" font-weight="700" fill="#597895" letter-spacing="1.3">ADMINISTRATION</text>
+<rect x="1370" y="223" width="300" height="46" rx="10" fill="#edf4fa" stroke="#d7e4ef" stroke-width="1" />
+<text x="1387" y="244" text-anchor="start" font-size="16" font-weight="400" fill="#526b80" >Student accounts activate directly.</text>
+<text x="1387" y="267" text-anchor="start" font-size="16" font-weight="400" fill="#526b80" >Faculty / organizations need approval.</text>
+<rect x="1360" y="671" width="300" height="70" rx="10" fill="#edf4fa" stroke="#d7e4ef" stroke-width="1" />
+<text x="1377" y="692" text-anchor="start" font-size="16" font-weight="400" fill="#526b80" >Students can track progress across</text>
+<text x="1377" y="715" text-anchor="start" font-size="16" font-weight="400" fill="#526b80" >the flight-plan categories.</text>
+<rect x="1360" y="1298" width="300" height="80" rx="10" fill="#edf4fa" stroke="#d7e4ef" stroke-width="1" />
+<text x="1377" y="1319" text-anchor="start" font-size="16" font-weight="400" fill="#526b80" >Administrators have full access</text>
+<text x="1377" y="1342" text-anchor="start" font-size="16" font-weight="400" fill="#526b80" >under the SRS, including these</text>
+<text x="1377" y="1365" text-anchor="start" font-size="16" font-weight="400" fill="#526b80" >management actions.</text>
+<path id="assoc-visitor-register" class="connector" d="M 247,218 L 767,231"/>
+<path id="assoc-registered-user-login" class="connector" d="M 247,415 L 767,341"/>
+<path id="assoc-registered-user-browse" class="connector" d="M 247,415 L 767,399"/>
+<path id="assoc-registered-user-rsvp" class="connector" d="M 247,415 L 767,457"/>
+<path id="assoc-registered-user-ownprofile" class="connector" d="M 247,415 L 767,515"/>
+<path id="assoc-student-home" class="connector" d="M 247,709 L 767,636"/>
+<path id="assoc-student-scoreboard" class="connector" d="M 247,709 L 767,698"/>
+<path id="assoc-student-filter" class="connector" d="M 247,709 L 767,760"/>
+<path id="assoc-student-notifications" class="connector" d="M 247,709 L 767,822"/>
+<path id="assoc-faculty-search" class="connector" d="M 247,970 L 767,932"/>
+<path id="assoc-faculty-studentprofile" class="connector" d="M 247,970 L 767,994"/>
+<path id="assoc-faculty-manageevents" class="connector" d="M 247,970 L 767,1067"/>
+<path id="assoc-faculty-interest" class="connector" d="M 247,970 L 767,1130"/>
+<path id="assoc-student-organization-manageevents" class="connector" d="M 247,1120 L 767,1081"/>
+<path id="assoc-student-organization-interest" class="connector" d="M 247,1120 L 767,1144"/>
+<path id="assoc-administrator-approve" class="connector" d="M 247,1320 L 767,1264"/>
+<path id="assoc-administrator-manageusers" class="connector" d="M 247,1320 L 767,1326"/>
+<path id="assoc-administrator-managepermission" class="connector" d="M 247,1320 L 767,1388"/>
+<path class="gen" d="M 176,710 H 99 V 370 H 164"/>
+<polygon points="175,370 163,363 163,377" fill="white" stroke="#9aaabb" stroke-width="1.65"/>
+<path class="gen" d="M 176,971 H 85 V 393 H 164"/>
+<polygon points="175,393 163,386 163,400" fill="white" stroke="#9aaabb" stroke-width="1.65"/>
+<path class="gen" d="M 176,1121 H 71 V 416 H 164"/>
+<polygon points="175,416 163,409 163,423" fill="white" stroke="#9aaabb" stroke-width="1.65"/>
+<path class="gen" d="M 176,1321 H 57 V 439 H 164"/>
+<polygon points="175,439 163,432 163,446" fill="white" stroke="#9aaabb" stroke-width="1.65"/>
+<text x="20" y="1473" text-anchor="start" font-size="16" font-weight="400" fill="#698198" >Hollow triangles show inherited</text>
+<text x="20" y="1495" text-anchor="start" font-size="16" font-weight="400" fill="#698198" >registered-user actions.</text>
+<g id="case-register"><title>Register account</title>
+<ellipse class="usecase" cx="1020" cy="231" rx="253" ry="25"/>
+<text x="1020" y="238" text-anchor="middle" font-size="19" font-weight="500" fill="#263e54" >Register account</text>
+</g>
+<g id="case-login"><title>Log in / log out</title>
+<ellipse class="usecase" cx="1020" cy="341" rx="253" ry="25"/>
+<text x="1020" y="348" text-anchor="middle" font-size="19" font-weight="500" fill="#263e54" >Log in / log out</text>
+</g>
+<g id="case-browse"><title>View events</title>
+<ellipse class="usecase" cx="1020" cy="399" rx="253" ry="25"/>
+<text x="1020" y="406" text-anchor="middle" font-size="19" font-weight="500" fill="#263e54" >View events</text>
+</g>
+<g id="case-rsvp"><title>RSVP to events</title>
+<ellipse class="usecase" cx="1020" cy="457" rx="253" ry="25"/>
+<text x="1020" y="464" text-anchor="middle" font-size="19" font-weight="500" fill="#263e54" >RSVP to events</text>
+</g>
+<g id="case-ownprofile"><title>View own profile</title>
+<ellipse class="usecase" cx="1020" cy="515" rx="253" ry="25"/>
+<text x="1020" y="522" text-anchor="middle" font-size="19" font-weight="500" fill="#263e54" >View own profile</text>
+</g>
+<g id="case-home"><title>View student homepage</title>
+<ellipse class="usecase" cx="1020" cy="636" rx="253" ry="25"/>
+<text x="1020" y="643" text-anchor="middle" font-size="19" font-weight="500" fill="#263e54" >View student homepage</text>
+</g>
+<g id="case-scoreboard"><title>View flight-plan scoreboard</title>
+<ellipse class="usecase" cx="1020" cy="698" rx="253" ry="25"/>
+<text x="1020" y="705" text-anchor="middle" font-size="19" font-weight="500" fill="#263e54" >View flight-plan scoreboard</text>
+</g>
+<g id="case-filter"><title>Filter events by identifiers</title>
+<ellipse class="usecase" cx="1020" cy="760" rx="253" ry="25"/>
+<text x="1020" y="767" text-anchor="middle" font-size="19" font-weight="500" fill="#263e54" >Filter events by identifiers</text>
+</g>
+<g id="case-notifications"><title>Receive event-update notifications</title>
+<ellipse class="usecase" cx="1020" cy="822" rx="253" ry="25"/>
+<text x="1020" y="829" text-anchor="middle" font-size="19" font-weight="500" fill="#263e54" >Receive event-update notifications</text>
+</g>
+<g id="case-search"><title>Search students by name</title>
+<ellipse class="usecase" cx="1020" cy="932" rx="253" ry="25"/>
+<text x="1020" y="939" text-anchor="middle" font-size="19" font-weight="500" fill="#263e54" >Search students by name</text>
+</g>
+<g id="case-studentprofile"><title>View student profiles</title>
+<ellipse class="usecase" cx="1020" cy="994" rx="253" ry="25"/>
+<text x="1020" y="1001" text-anchor="middle" font-size="19" font-weight="500" fill="#263e54" >View student profiles</text>
+</g>
+<g id="case-manageevents"><title>Create / reschedule / cancel events</title>
+<ellipse class="usecase" cx="1020" cy="1074" rx="253" ry="25"/>
+<text x="1020" y="1081" text-anchor="middle" font-size="19" font-weight="500" fill="#263e54" >Create / reschedule / cancel events</text>
+</g>
+<g id="case-interest"><title>View event RSVP totals</title>
+<ellipse class="usecase" cx="1020" cy="1137" rx="253" ry="25"/>
+<text x="1020" y="1144" text-anchor="middle" font-size="19" font-weight="500" fill="#263e54" >View event RSVP totals</text>
+</g>
+<g id="case-approve"><title>Approve faculty / organization accounts</title>
+<ellipse class="usecase" cx="1020" cy="1264" rx="253" ry="25"/>
+<text x="1020" y="1271" text-anchor="middle" font-size="19" font-weight="500" fill="#263e54" >Approve faculty / organization accounts</text>
+</g>
+<g id="case-manageusers"><title>Manage users and roles</title>
+<ellipse class="usecase" cx="1020" cy="1326" rx="253" ry="25"/>
+<text x="1020" y="1333" text-anchor="middle" font-size="19" font-weight="500" fill="#263e54" >Manage users and roles</text>
+</g>
+<g id="case-managepermission"><title>Manage system permissions</title>
+<ellipse class="usecase" cx="1020" cy="1388" rx="253" ry="25"/>
+<text x="1020" y="1395" text-anchor="middle" font-size="19" font-weight="500" fill="#263e54" >Manage system permissions</text>
+</g>
+<g id="actor-visitor"><title>Visitor</title>
+<circle class="actor" cx="210" cy="183" r="15"/>
+<path class="actor" d="M 210,198 V 241 M 174,216 H 246 M 210,241 L 185,279 M 210,241 L 235,279"/>
+<text x="210" y="305" text-anchor="middle" font-size="18" font-weight="700" fill="#1d3c59" >Visitor</text>
+</g>
+<g id="actor-registered-user"><title>Registered User</title>
+<circle class="actor" cx="210" cy="380" r="15"/>
+<path class="actor" d="M 210,395 V 438 M 174,413 H 246 M 210,438 L 185,476 M 210,438 L 235,476"/>
+<text x="210" y="502" text-anchor="middle" font-size="18" font-weight="700" fill="#1d3c59" >Registered User</text>
+<text x="210" y="525" text-anchor="middle" font-size="16" font-weight="400" fill="#648097" >(shared actions)</text>
+</g>
+<g id="actor-student"><title>Student</title>
+<circle class="actor" cx="210" cy="674" r="15"/>
+<path class="actor" d="M 210,689 V 732 M 174,707 H 246 M 210,732 L 185,770 M 210,732 L 235,770"/>
+<text x="210" y="796" text-anchor="middle" font-size="18" font-weight="700" fill="#1d3c59" >Student</text>
+</g>
+<g id="actor-faculty"><title>Faculty</title>
+<circle class="actor" cx="210" cy="935" r="15"/>
+<path class="actor" d="M 210,950 V 993 M 174,968 H 246 M 210,993 L 185,1031 M 210,993 L 235,1031"/>
+<text x="210" y="1057" text-anchor="middle" font-size="18" font-weight="700" fill="#1d3c59" >Faculty</text>
+</g>
+<g id="actor-student-organization"><title>Student Organization</title>
+<circle class="actor" cx="210" cy="1085" r="15"/>
+<path class="actor" d="M 210,1100 V 1143 M 174,1118 H 246 M 210,1143 L 185,1181 M 210,1143 L 235,1181"/>
+<text x="210" y="1207" text-anchor="middle" font-size="18" font-weight="700" fill="#1d3c59" >Student</text>
+<text x="210" y="1230" text-anchor="middle" font-size="16" font-weight="400" fill="#648097" >Organization</text>
+</g>
+<g id="actor-administrator"><title>Administrator</title>
+<circle class="actor" cx="210" cy="1285" r="15"/>
+<path class="actor" d="M 210,1300 V 1343 M 174,1318 H 246 M 210,1343 L 185,1381 M 210,1343 L 235,1381"/>
+<text x="210" y="1407" text-anchor="middle" font-size="18" font-weight="700" fill="#1d3c59" >Administrator</text>
+</g>
+<text x="455" y="1503" text-anchor="start" font-size="17" font-weight="400" fill="#687e90" >Solid lines link actors to actions; hollow triangles indicate role inheritance.</text>
+<text x="455" y="1530" text-anchor="start" font-size="17" font-weight="400" fill="#687e90" >Student organizations are not connected to student-profile access.</text>
+</svg>
