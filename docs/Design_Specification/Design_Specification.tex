@@ -3,7 +3,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
-\usepackage{longtable,booktabs,array,enumitem,hyperref,xcolor}
+\usepackage{longtable,booktabs,array,enumitem,hyperref,xcolor,graphicx,pdflscape}
 \hypersetup{colorlinks=true,linkcolor=blue,urlcolor=blue}
 \setlist[itemize]{leftmargin=*}
 \newcommand{\planned}{\textit{(still to be confirmed)}}
@@ -111,6 +111,45 @@ The Snapshot Objectives document we have so far only explains the start of the p
 \end{itemize}
 After each snapshot, we will update this document to match the changes made to the SRS, SDD, Jira tasks, and Docker setup.
 
+
+\section{Supporting UML Diagrams}
+The following diagrams help explain the design described in this document. They are based on our current SRS and SDD, so some details could change when we finalize the database and the implementation.
+
+\subsection{Use Case Diagram}
+This diagram shows the main actions available to each type of user. It also shows the actions shared by registered users, such as logging in, viewing events, and submitting RSVPs. Student organizations do not have access to student profiles. The Visitor and Registered User actors are used to organize shared actions; they are not additional account roles.
+
+\subsection{Activity Diagram}
+This diagram shows how someone signs up for an account. Students can register directly, while faculty and student organization accounts require administrator approval. It also includes a path for invalid registration information. Our SDD does not yet specify the full process for rejected applications.
+
+\subsection{Class Diagram}
+This is a conceptual model of the information the system needs. The User, Role, and Profile records come from our SDD. Event information comes from the SRS, and RSVP is shown as a proposed record for tracking event responses. Exact field names and database relationships still need to be agreed on by the team.
+
+\clearpage
+\newgeometry{margin=0.35in}
+\begin{landscape}
+\thispagestyle{empty}
+\begin{center}
+\includegraphics[width=0.98\linewidth,height=0.97\textheight,keepaspectratio]{diagrams/Use_Case_Diagram.pdf}
+\end{center}
+\end{landscape}
+
+\begin{landscape}
+\thispagestyle{empty}
+\begin{center}
+\includegraphics[width=0.98\linewidth,height=0.97\textheight,keepaspectratio]{diagrams/Activity_Diagram.pdf}
+\end{center}
+\end{landscape}
+
+\begin{landscape}
+\thispagestyle{empty}
+\begin{center}
+\includegraphics[width=0.98\linewidth,height=0.97\textheight,keepaspectratio]{diagrams/Class_Diagram.pdf}
+\end{center}
+\end{landscape}
+\restoregeometry
+\clearpage
+\clearpage
+
 \section{Things We Still Need to Confirm}
 \begin{enumerate}
 \item Is the group's frontend a web React application, Expo web, or React Native mobile application?
@@ -118,7 +157,7 @@ After each snapshot, we will update this document to match the changes made to t
 \item Which exact packages and versions are present in the team's Docker and package files?
 \item What student-profile information may faculty access, and under what authorization conditions?
 \item What is the finalized data schema and API route design?
-\item Is the Design Specification owned by the author of this draft, and who owns the required high-level workflow diagram?
+\item Have the team review the UML diagrams and confirm who owns the separate high-level workflow diagram required by the assignment?
 \end{enumerate}
 
 \section{References}
